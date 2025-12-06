@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 连接到信令服务器
   function connectToServer() {
-    socket = io('http://localhost:3000'); // 替换为实际服务器地址
+    socket = io('https://voice-call-backend-xynn0.render.com'); // 替换为实际服务器地址
 
     socket.on('connect', () => {
       console.log('连接到服务器');
