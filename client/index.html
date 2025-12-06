@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实时语音通话</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 登录区域 -->
+    <div id="loginSection" class="section">
+      <h1>语音通话系统</h1>
+      <div class="input-group">
+        <label for="userId">输入你的ID</label>
+        <input type="text" id="userId" placeholder="例如: user123" required>
+      </div>
+      <button id="loginBtn" class="btn primary">进入系统</button>
+    </div>
+
+    <!-- 主操作区域 -->
+    <div id="mainSection" class="section hidden">
+      <div class="status-bar">
+        <span>当前ID: <span id="currentUserId"></span></span>
+        <span class="status" id="connectionStatus">未连接</span>
+      </div>
+
+      <div class="call-controls">
+        <div class="input-group">
+          <label for="calleeId">通话对象ID</label>
+          <input type="text" id="calleeId" placeholder="输入对方ID">
+        </div>
+        <button id="callBtn" class="btn success">
+          <i class="fas fa-phone"></i> 发起通话
+        </button>
+      </div>
+
+      <!-- 通话状态区域 -->
+      <div id="callStatusSection" class="call-status hidden">
+        <h2>正在与 <span id="remoteUserId"></span> 通话中</h2>
+        <div class="call-timer" id="callTimer">00:00</div>
+        <div class="call-actions">
+          <button id="muteBtn" class="btn secondary">
+            <i class="fas fa-microphone-slash"></i> 静音
+          </button>
+          <button id="endCallBtn" class="btn danger">
+            <i class="fas fa-phone-slash"></i> 结束通话
+          </button>
+        </div>
+      </div>
+
+      <!-- 来电提示 -->
+      <div id="incomingCallSection" class="incoming-call hidden">
+        <h3>来自 <span id="incomingCallerId"></span> 的来电</h3>
+        <div class="call-actions">
+          <button id="acceptCallBtn" class="btn success">
+            <i class="fas fa-phone"></i> 接听
+          </button>
+          <button id="rejectCallBtn" class="btn danger">
+            <i class="fas fa-phone-slash"></i> 挂断
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
